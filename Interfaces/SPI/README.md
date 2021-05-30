@@ -1,4 +1,4 @@
-* # Part Name: SPI Controller
+# Part Name: SPI Controller
 * Creator Name: gracefu
 * Date Created: 26 May 2021
 * Date Last Updated: 26 May 2021
