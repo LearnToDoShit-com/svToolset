@@ -1,0 +1,30 @@
+module SingleReadMem #(
+	parameter BitWidth = 8,
+	parameter Depth = 16,
+
+)(
+	input clk,    // Clock
+	input clk_en, // Clock Enable
+	input rst,    // Asynchronous reset active high
+	
+	input we,
+	input [Depth-1:0] wAddr,
+	input [BitWidth-1:0] dIN,
+
+	input re,
+	input [Depth-1:0] rAddr,
+	output [BitWidth-1:0] dOUT,
+);
+
+	always_ff @(posedge clk or posedge rst) begin : proc_MemBuff
+		if(rst) begin
+			MemBuff <= 0;
+		end 
+		else if(clk_en & we) begin
+			MemBuff[wAddr] <= dIN;
+		end
+	end
+
+	assign dOUT = re : MemBuff[rAddr] : 0;
+
+endmodule : SingleReadMem

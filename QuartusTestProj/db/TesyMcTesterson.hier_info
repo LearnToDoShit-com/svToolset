@@ -1,0 +1,74 @@
+|OREStyleALU_RCA
+InvA => InvA.IN4
+InvB => InvB.IN4
+cIn => CarryTemp.DATAA
+ORen => ORen.IN4
+FloodCarry => CarryTemp.OUTPUTSELECT
+FloodCarry => CarryTemp.OUTPUTSELECT
+FloodCarry => CarryTemp.OUTPUTSELECT
+FloodCarry => CarryTemp.OUTPUTSELECT
+cOut <= OREStyleALU_RCACell:StackOfRCACells[3].RCACell.cOut
+ifZero <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+dINA[0] => dINA[0].IN1
+dINA[1] => dINA[1].IN1
+dINA[2] => dINA[2].IN1
+dINA[3] => dINA[3].IN1
+dINB[0] => dINB[0].IN1
+dINB[1] => dINB[1].IN1
+dINB[2] => dINB[2].IN1
+dINB[3] => dINB[3].IN1
+dOUT[0] <= OREStyleALU_RCACell:StackOfRCACells[0].RCACell.dOUT
+dOUT[1] <= OREStyleALU_RCACell:StackOfRCACells[1].RCACell.dOUT
+dOUT[2] <= OREStyleALU_RCACell:StackOfRCACells[2].RCACell.dOUT
+dOUT[3] <= OREStyleALU_RCACell:StackOfRCACells[3].RCACell.dOUT
+
+
+|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[0].RCACell
+cIn => SecondCarry.IN1
+cIn => dOUT.IN1
+ORen => GenerateAB.IN1
+InvA => tempA.IN0
+InvB => tempB.IN0
+dINA => tempA.IN1
+dINB => tempB.IN1
+cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
+dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[1].RCACell
+cIn => SecondCarry.IN1
+cIn => dOUT.IN1
+ORen => GenerateAB.IN1
+InvA => tempA.IN0
+InvB => tempB.IN0
+dINA => tempA.IN1
+dINB => tempB.IN1
+cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
+dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[2].RCACell
+cIn => SecondCarry.IN1
+cIn => dOUT.IN1
+ORen => GenerateAB.IN1
+InvA => tempA.IN0
+InvB => tempB.IN0
+dINA => tempA.IN1
+dINB => tempB.IN1
+cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
+dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[3].RCACell
+cIn => SecondCarry.IN1
+cIn => dOUT.IN1
+ORen => GenerateAB.IN1
+InvA => tempA.IN0
+InvB => tempB.IN0
+dINA => tempA.IN1
+dINB => tempB.IN1
+cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
+dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+
+

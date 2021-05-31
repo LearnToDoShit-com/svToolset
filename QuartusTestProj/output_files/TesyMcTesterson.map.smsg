@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at SPI.sv(31): always construct contains both blocking and non-blocking assignments File: M:/Git/PISA/Assemulator/conf/SPI.sv Line: 31
