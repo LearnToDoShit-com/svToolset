@@ -1,74 +1,74 @@
-|OREStyleALU_RCA
-InvA => InvA.IN4
-InvB => InvB.IN4
-cIn => CarryTemp.DATAA
-ORen => ORen.IN4
-FloodCarry => CarryTemp.OUTPUTSELECT
-FloodCarry => CarryTemp.OUTPUTSELECT
-FloodCarry => CarryTemp.OUTPUTSELECT
-FloodCarry => CarryTemp.OUTPUTSELECT
-cOut <= OREStyleALU_RCACell:StackOfRCACells[3].RCACell.cOut
-ifZero <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
-overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
-dINA[0] => dINA[0].IN1
-dINA[1] => dINA[1].IN1
-dINA[2] => dINA[2].IN1
-dINA[3] => dINA[3].IN1
-dINB[0] => dINB[0].IN1
-dINB[1] => dINB[1].IN1
-dINB[2] => dINB[2].IN1
-dINB[3] => dINB[3].IN1
-dOUT[0] <= OREStyleALU_RCACell:StackOfRCACells[0].RCACell.dOUT
-dOUT[1] <= OREStyleALU_RCACell:StackOfRCACells[1].RCACell.dOUT
-dOUT[2] <= OREStyleALU_RCACell:StackOfRCACells[2].RCACell.dOUT
-dOUT[3] <= OREStyleALU_RCACell:StackOfRCACells[3].RCACell.dOUT
-
-
-|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[0].RCACell
-cIn => SecondCarry.IN1
-cIn => dOUT.IN1
-ORen => GenerateAB.IN1
-InvA => tempA.IN0
-InvB => tempB.IN0
-dINA => tempA.IN1
-dINB => tempB.IN1
-cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
-dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[1].RCACell
-cIn => SecondCarry.IN1
-cIn => dOUT.IN1
-ORen => GenerateAB.IN1
-InvA => tempA.IN0
-InvB => tempB.IN0
-dINA => tempA.IN1
-dINB => tempB.IN1
-cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
-dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[2].RCACell
-cIn => SecondCarry.IN1
-cIn => dOUT.IN1
-ORen => GenerateAB.IN1
-InvA => tempA.IN0
-InvB => tempB.IN0
-dINA => tempA.IN1
-dINB => tempB.IN1
-cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
-dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|OREStyleALU_RCA|OREStyleALU_RCACell:StackOfRCACells[3].RCACell
-cIn => SecondCarry.IN1
-cIn => dOUT.IN1
-ORen => GenerateAB.IN1
-InvA => tempA.IN0
-InvB => tempB.IN0
-dINA => tempA.IN1
-dINB => tempB.IN1
-cOut <= cOut.DB_MAX_OUTPUT_PORT_TYPE
-dOUT <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+|Shifter
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+En => dOUT.OUTPUTSELECT
+Left => Mux0.IN4
+Left => Mux1.IN4
+Left => Mux2.IN4
+Left => Mux3.IN4
+Left => Mux4.IN4
+Left => Mux5.IN4
+Left => Mux6.IN4
+Left => Mux7.IN4
+Left => RightShiftAmount[2].OUTPUTSELECT
+Left => RightShiftAmount[1].OUTPUTSELECT
+Left => RightShiftAmount[0].OUTPUTSELECT
+Left => LeftShiftAmount[2].OUTPUTSELECT
+Left => LeftShiftAmount[1].OUTPUTSELECT
+Left => LeftShiftAmount[0].OUTPUTSELECT
+RotateEnable => Mux0.IN5
+RotateEnable => Mux1.IN5
+RotateEnable => Mux2.IN5
+RotateEnable => Mux3.IN5
+RotateEnable => Mux4.IN5
+RotateEnable => Mux5.IN5
+RotateEnable => Mux6.IN5
+RotateEnable => Mux7.IN5
+dIN[0] => ShiftRight0.IN8
+dIN[0] => ShiftLeft0.IN8
+dIN[0] => dOUT.DATAA
+dIN[1] => ShiftRight0.IN7
+dIN[1] => ShiftLeft0.IN7
+dIN[1] => dOUT.DATAA
+dIN[2] => ShiftRight0.IN6
+dIN[2] => ShiftLeft0.IN6
+dIN[2] => dOUT.DATAA
+dIN[3] => ShiftRight0.IN5
+dIN[3] => ShiftLeft0.IN5
+dIN[3] => dOUT.DATAA
+dIN[4] => ShiftRight0.IN4
+dIN[4] => ShiftLeft0.IN4
+dIN[4] => dOUT.DATAA
+dIN[5] => ShiftRight0.IN3
+dIN[5] => ShiftLeft0.IN3
+dIN[5] => dOUT.DATAA
+dIN[6] => ShiftRight0.IN2
+dIN[6] => ShiftLeft0.IN2
+dIN[6] => dOUT.DATAA
+dIN[7] => ShiftRight0.IN1
+dIN[7] => ShiftLeft0.IN1
+dIN[7] => dOUT.DATAA
+ShAmount[0] => RightShiftAmount[0].DATAA
+ShAmount[0] => LeftShiftAmount[0].DATAB
+ShAmount[0] => Add0.IN3
+ShAmount[1] => RightShiftAmount[1].DATAA
+ShAmount[1] => LeftShiftAmount[1].DATAB
+ShAmount[1] => Add0.IN2
+ShAmount[2] => RightShiftAmount[2].DATAA
+ShAmount[2] => LeftShiftAmount[2].DATAB
+ShAmount[2] => Add0.IN1
+dOUT[0] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[1] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[2] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[3] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[4] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[5] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[6] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
+dOUT[7] <= dOUT.DB_MAX_OUTPUT_PORT_TYPE
 
 

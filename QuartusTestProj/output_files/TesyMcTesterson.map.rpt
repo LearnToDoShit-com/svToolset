@@ -1,5 +1,5 @@
 Analysis & Elaboration report for TesyMcTesterson
-Sun May 30 19:06:39 2021
+Mon May 31 21:22:50 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -9,7 +9,7 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   1. Legal Notice
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
-  4. Parameter Settings for User Entity Instance: Top-level Entity: |OREStyleALU_RCA
+  4. Parameter Settings for User Entity Instance: Top-level Entity: |Shifter
   5. Analysis & Elaboration Settings
   6. Analysis & Elaboration Messages
 
@@ -38,10 +38,10 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Sun May 30 19:06:39 2021       ;
+; Analysis & Elaboration Status ; Successful - Mon May 31 21:22:50 2021       ;
 ; Quartus Prime Version         ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                 ; TesyMcTesterson                             ;
-; Top-level Entity Name         ; OREStyleALU_RCA                             ;
+; Top-level Entity Name         ; Shifter                                     ;
 ; Family                        ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
 ; Total registers               ; N/A until Partition Merge                   ;
@@ -69,13 +69,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Top-level Entity: |OREStyleALU_RCA ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; BitWidth       ; 4     ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Shifter ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; BitWidth       ; 8     ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -85,7 +85,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
-; Top-level entity name                                                           ; OREStyleALU_RCA    ; TesyMcTesterson    ;
+; Top-level entity name                                                           ; Shifter            ; TesyMcTesterson    ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -172,22 +172,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sun May 30 19:06:31 2021
+    Info: Processing started: Mon May 31 21:22:43 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TesyMcTesterson -c TesyMcTesterson --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file /git/learntodoshit/thetoolset/arithmetic/orestylealu.sv
-    Info (12023): Found entity 1: OREStyleALU_RCA File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/OREStyleALU.sv Line: 6
-Info (12021): Found 1 design units, including 1 entities, in source file /git/learntodoshit/thetoolset/arithmetic/orestylealu_rcacell.sv
-    Info (12023): Found entity 1: OREStyleALU_RCACell File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/OREStyleALU_RCACell.sv Line: 1
-Warning (12019): Can't analyze file -- file ../WorkBench/DualReadMem.sv is missing
-Warning (12019): Can't analyze file -- file ../WorkBench/SingleReadMem.sv is missing
-Info (12127): Elaborating entity "OREStyleALU_RCA" for the top level hierarchy
-Info (12128): Elaborating entity "OREStyleALU_RCACell" for hierarchy "OREStyleALU_RCACell:StackOfRCACells[0].RCACell" File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/OREStyleALU.sv Line: 39
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4762 megabytes
-    Info: Processing ended: Sun May 30 19:06:39 2021
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:21
+Info (12021): Found 1 design units, including 1 entities, in source file /git/learntodoshit/thetoolset/arithmetic/shifter.sv
+    Info (12023): Found entity 1: Shifter File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/Shifter.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /git/learntodoshit/thetoolset/arithmetic/orestylealus/rca/rca_cell.sv
+    Info (12023): Found entity 1: RCA_Cell File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/OREStyleALUs/RCA/RCA_Cell.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /git/learntodoshit/thetoolset/arithmetic/orestylealus/rca/rca_alu.sv
+    Info (12023): Found entity 1: RCA_ALU File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/OREStyleALUs/RCA/RCA_ALU.sv Line: 7
+Info (12127): Elaborating entity "Shifter" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at Shifter.sv(16): truncated value with size 32 to match size of target (3) File: M:/Git/LearnToDoShit/TheToolset/Arithmetic/Shifter.sv Line: 16
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4768 megabytes
+    Info: Processing ended: Mon May 31 21:22:50 2021
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:19
 
 

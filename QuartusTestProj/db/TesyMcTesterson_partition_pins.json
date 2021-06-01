@@ -1,0 +1,137 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "cOut",
+					"strict" : false
+				},
+				{
+					"name" : "ifZero",
+					"strict" : false
+				},
+				{
+					"name" : "overflow",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dOUT[7]",
+					"strict" : false
+				},
+				{
+					"name" : "InvA",
+					"strict" : false
+				},
+				{
+					"name" : "InvB",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "cIn",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ORen",
+					"strict" : false
+				},
+				{
+					"name" : "FloodCarry",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dINA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "dINB[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
