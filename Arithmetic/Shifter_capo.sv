@@ -1,4 +1,4 @@
-module Shifter #(
+module Shifter_capo #(
 	parameter BitWidth = 8
 )(
 	input En,         	// Enable the shifter
@@ -10,7 +10,7 @@ module Shifter #(
 	input [ShiftWidth-1:0] ShAmount, 
 	output [BitWidth-1:0] dOUT 
 );
-
+	// What bit width is the shift amount?
 	localparam ShiftWidth = $clog2(BitWidth);
 
 	// Determine the inverse shift amount.
@@ -41,4 +41,4 @@ module Shifter #(
 
 	// Mux the Shift Result and dIN based on if the shifter is enabled.
 	assign dOUT = En ? ShiftResult : dIN;
-endmodule : Shifter
+endmodule : Shifter_capo

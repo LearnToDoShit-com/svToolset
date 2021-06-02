@@ -29,10 +29,14 @@ module RCADataLoop_DualRead #(
 									// This is seperate from ImmIN, as this is syncronized with the pipeline. 
 									// Useful for pipelined Load operations. 
 
-	// Shifter control lines, leave disconnected if you disabled the shifter.
+	// ALU Shifter control lines
+		// add a parameter for this... for ppl that only want a single Rshifter, not a barrel.
+
+
+	// Barrel Shifter control lines, leave disconnected if you disabled the shifter.
 	input ShiftEn,         	        // Enable the shifter
-	input ShiftByA,        	        // If 1, shift B by register A; if 0, shift B by ImmIN
-	input ShiftLeft,       	        // If 1, shift left; if 0, shift right
+	input ShiftByA,        	        // If 1, shift B by register A; If 0, shift B by ImmIN
+	input ShiftLeft,       	        // If 1, shift left; If 0, shift right
 	input ShiftRotateEnable,	    // If 1, rotate while shifting; If 0, do not rotate while shifting
 	
 	// Output Flags
@@ -54,13 +58,16 @@ module RCADataLoop_DualRead #(
 	// Register Write Address
 	input  [RegAddrWidth-1:0] regCAddr,
 
-	// Writeback input from external source that feeds directly into the same output as the ALU/shifter output.
-		// This value will go into the forwarder, if it is enabled. 
+	// Writeback input from external source that feeds directly into the same output 
+		// as the ALU/shifter output.
+	// This value will go into the forwarder, if it is enabled. 
 	input  [BitWidth-1:0] OutputOverrideIN,
 
 	// Data Out
 	output [BitWidth-1:0] ALUout
 );
+	// What BitWidth will the register addresses be?
+	localparam RegAddrWidth = $clog2(RegisterCount);	
 
 	// These wires holds the data coming out of Registers.
 	wire [BitWidth-1:0] regAData;
@@ -68,15 +75,19 @@ module RCADataLoop_DualRead #(
 	
 	// These wires are what go directly into the ALU. They will either have
 		// register data or immediate data.	
+	//
+	//
 	//////////////// these need to conditionally be reg based on if the dataloop is pipelined.
-	wire [BitWidth-1:0] dALUA = ImmEnA ? ImmIN : regAData;
+	//
+	//
+	wire [BitWidth-1:0] dALUA = (ImmEnA | (ShifterEnabled & !ShiftByA & ShiftEn)) ? ImmIN : regAData;
 	wire [BitWidth-1:0] dALUB = ImmEnB ? ImmIN : regBData;
 
 	// This wire holds the ALU output.
 	wire [BitWidth-1:0] dALUOUT;
 
 	// This wire holds the result of the ALU/Shifter
-	wire [BitWidth-1:0] Result,
+	wire [BitWidth-1:0] Result;
 
 	// Register File
 	DualReadMem #(
@@ -91,7 +102,7 @@ module RCADataLoop_DualRead #(
 		.clk_en(clk_en),
 		.wEn   (RegWriteEn),
 		.wAddr (regCAddr),
-		.dIN   (Result),
+		.dIN   (ResultTemp), // This needs to be a temp wire, based on fwd enable status
 		.rEnA  (EnA),
 		.rAddrA(regAAddr),
 		.dOUTA (regAData),
@@ -116,27 +127,53 @@ module RCADataLoop_DualRead #(
 		.dOUT      (dALUOUT)
 	);
 
+	// What bit width is the shift amount?
+	localparam ShiftWidth = $clog2(BitWidth);
 	generate
+		// If the Shifter is enabled, add it to the pipeline after the ALU.
 		if (ShifterEnabled) begin
-
 			Shifter #(
 				.BitWidth(BitWidth)
 			) BarrelShifter (
-
+				.En          (ShiftEn),
+				.Left        (ShiftLeft),
+				.RotateEnable(ShiftRotateEnable),
+				.dIN         (dALUOUT),   /////////////////////// make this shifter an either/or with the ALU, not a force through... or make that an option for a crazier pipeline?
+				.ShAmount    (dALUA[ShiftWidth-1:0]),
+				.dOUT        (Result)
 			);
-
-
 		end
 		// If the Shifter is not Enabled; pass dALUOUT to Result.	
 		else begin
 			assign Result = dALUOUT;
 		end
+	endgenerate
 
+	// Add Forward Registers and Forwarded is True.
 
+	wire [BitWidth-1:0] ResultTemp;
+	generate
+		if(Forwarded) begin
+			reg [BitWidth-1:0] ResultBuffer;
+
+			always_ff @(posedge clk or posedge rst) begin : proc_ResultBuffer
+				if(rst) begin
+					ResultBuffer <= 0;
+				end else if(clk_en) begin
+					ResultBuffer <= Result;
+				end
+			end
+			assign ResultTemp = Result;
+		end
+		// If not forwarded, just bypass
+		else begin	
+			assign ResultTemp = Result;
+		end
 	endgenerate
 
 
-
+// Making a paremeterizable Hazard Detector would be a great part to have.
+	// Add Register Hazard Forward Detection if Forwarded is True.
 
 
 

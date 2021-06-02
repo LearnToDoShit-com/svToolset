@@ -1,7 +1,7 @@
-Analysis & Elaboration Status : Successful - Mon May 31 21:22:50 2021
+Analysis & Elaboration Status : Successful - Tue Jun 01 22:42:16 2021
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : TesyMcTesterson
-Top-level Entity Name : Shifter
+Top-level Entity Name : HazardDetection_NOperands
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A until Partition Merge
 Total registers : N/A until Partition Merge
