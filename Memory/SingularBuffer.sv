@@ -1,5 +1,3 @@
-// Validated
-
 // Takes in a single value of bidwidth N when an input handshake is made
   // and outputs that same value the next time an output handshake is made.
 module SingularBuffer #(
