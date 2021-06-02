@@ -17,7 +17,6 @@ module Queue #(
 		// Output Flags
 	output BufferFull,
 	output BufferEmpty,
-	output OnLastEntry
 );
 	localparam DepthBitWidth = ($clog2(BufferDepth));
 		wire rEn;
@@ -43,8 +42,6 @@ module Queue #(
 		assign dOutACK = !BufferEmpty;
 		assign dInREQ = !BufferFull;
 
-
-		assign OnLastEntry = (wAddr == (rAddr+1)); //dis no work
 		assign BufferEmpty = (wAddr == rAddr) && !(Depth[DepthBitWidth]);
 		assign BufferFull = (wAddr == rAddr) && |Depth[DepthBitWidth];
 
