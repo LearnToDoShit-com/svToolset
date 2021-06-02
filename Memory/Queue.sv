@@ -1,4 +1,4 @@
-// Requires Counter and CounterWLoad ///!!!!!!!!!!!!!!!!!///
+// Requires Counter and CounterWLoad ///!!!!!!!!!!!!!!!!!//
 
 // Takes in M values of bitwidth N, outputs in FIFO order.
 module Queue #(
