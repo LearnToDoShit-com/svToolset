@@ -45,7 +45,7 @@ module Queue_TwoCounter #(
 
 		wire AddrMatch = wAddr[DepthBitWidth-1:0] == rAddr[DepthBitWidth-1:0];
 
-		assign BufferEmpty = AddrMatch && (wAddr[DepthBitWidth] && rAddr[DepthBitWidth]);
+		assign BufferEmpty = AddrMatch && !(wAddr[DepthBitWidth] ^ rAddr[DepthBitWidth]);
 		assign BufferFull = AddrMatch && (wAddr[DepthBitWidth] ^ rAddr[DepthBitWidth]);
 
 		QTC_Counter #(
