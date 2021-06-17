@@ -64,7 +64,7 @@ module Queue_DualClock #(
 	assign BufferFull = FullReg;
 
 	// Empty Tracking or the Read
-	wire EmptyTemp = AddrMatch && (wAddr[DepthBitWidth] && rAddr[DepthBitWidth]);
+	wire EmptyTemp = AddrMatch && !(wAddr[DepthBitWidth] ^ rAddr[DepthBitWidth]);
 	reg  EmptyReg;
 	// This EmptyReg garentees the cycle after you empty the buffer,
 		// you will be told its empty and you will not be able to read another
